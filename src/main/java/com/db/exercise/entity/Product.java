@@ -19,7 +19,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCT_SEQ_GENERATOR")
 	@SequenceGenerator(name = "PRODUCT_SEQ_GENERATOR", sequenceName = "PRODUCT_SEQ")
 	@Column(name = "PRODUCT_ID", nullable = false)
-	private String id;
+	private Long id;
 
 	@Column(name = "NAME", nullable = false)
 	private String name;

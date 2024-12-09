@@ -19,11 +19,10 @@ public class Bid {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BID_SEQ_GENERATOR")
 	@SequenceGenerator(name = "BID_SEQ_GENERATOR", sequenceName = "BID_SEQ")
 	@Column(name = "BID_ID", nullable = false)
-	private String id;
+	private Long id;
 
-	@OneToOne
-	@JoinColumn(name = "USER_ID", nullable = false)
-	private User user;
+	@Column(name = "USER_ID", nullable = false)
+	private Long userId;
 
 	@Column(name = "AMOUNT", nullable = false)
 	private Double amount;

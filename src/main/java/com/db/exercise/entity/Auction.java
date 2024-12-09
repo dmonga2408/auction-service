@@ -23,7 +23,7 @@ public class Auction {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AUCTION_SEQ_GENERATOR")
 	@SequenceGenerator(name = "AUCTION_SEQ_GENERATOR", sequenceName = "AUCTION_SEQ")
 	@Column(name = "AUCTION_ID", nullable = false)
-	private String id;
+	private Long id;
 
 	@OneToOne
 	@JoinColumn(name = "PRODUCT_ID")
@@ -37,10 +37,6 @@ public class Auction {
 
 	@Column(name = "STARTING_AMOUNT", nullable = false)
 	private Double startingAmount;
-
-	@OneToMany
-	@JoinColumn(name = "USER_ID")
-	private Set<User> bidders;
 
 	@OneToMany
 	@JoinColumn(name = "BID_ID")
