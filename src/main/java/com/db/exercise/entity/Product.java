@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @NoArgsConstructor
@@ -23,5 +22,8 @@ public class Product {
 
 	@Column(name = "NAME", nullable = false)
 	private String name;
+
+	@Column(name = "MINIMUM_BID_AMOUNT", nullable = false)
+	private Double minimumBidAmount;
 
 }
