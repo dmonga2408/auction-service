@@ -23,8 +23,8 @@ public class Auction {
 	@Column(name = "AUCTION_ID", nullable = false)
 	private Long id;
 
-	@OneToOne
-	@JoinColumn(name = "PRODUCT_ID")
+	@OneToOne(mappedBy = "auction", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@PrimaryKeyJoinColumn
 	private Product product;
 
 	@Column(name = "START_TIME", nullable = false)
@@ -33,11 +33,12 @@ public class Auction {
 	@Column(name = "END_TIME")
 	private Date endTime;
 
-	@Column(name = "STARTING_AMOUNT", nullable = false)
-	private Double startingAmount;
-
-	@OneToMany
-	@JoinColumn(name = "BID_ID")
+	@OneToMany(mappedBy="auction", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Bid> bids;
+
+	public List<Bid> addBid(Bid bid){
+		bids.add(bid);
+		return bids;
+	}
 	
 }

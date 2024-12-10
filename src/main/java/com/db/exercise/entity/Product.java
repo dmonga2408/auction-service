@@ -26,4 +26,9 @@ public class Product {
 	@Column(name = "MINIMUM_BID_AMOUNT", nullable = false)
 	private Double minimumBidAmount;
 
+	@OneToOne
+	@MapsId
+	@JoinColumn(name = "AUCTION_ID")
+	private Auction auction;
+
 }

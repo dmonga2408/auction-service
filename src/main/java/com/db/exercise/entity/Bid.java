@@ -26,4 +26,8 @@ public class Bid {
 	@Column(name = "AMOUNT", nullable = false)
 	private Double amount;
 
+	@ManyToOne
+	@JoinColumn(name="AUCTION_ID")
+	private Auction auction;
+
 }
