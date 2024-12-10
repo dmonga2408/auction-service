@@ -1,10 +1,13 @@
 package com.db.exercise.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 @Entity
 @NoArgsConstructor
@@ -12,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @Table(name = "PRODUCT")
-public class Product {
+public class Product implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCT_SEQ_GENERATOR")
@@ -25,10 +28,5 @@ public class Product {
 
 	@Column(name = "MINIMUM_BID_AMOUNT", nullable = false)
 	private Double minimumBidAmount;
-
-	@OneToOne
-	@MapsId
-	@JoinColumn(name = "AUCTION_ID")
-	private Auction auction;
 
 }

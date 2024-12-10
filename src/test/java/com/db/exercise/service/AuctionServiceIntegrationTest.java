@@ -29,20 +29,16 @@ class AuctionServiceIntegrationTest {
     @Test
     void shouldAddNewAuctionsAndReturnAllActiveAuctionsWhenRequested() throws Exception {
         Product product1 = Instancio.of(Product.class).ignore(field(Product::getId)).create();
-//        productService.addNewProduct(product1);
 
         Product product2 = Instancio.of(Product.class).ignore(field(Product::getId)).create();
-//        productService.addNewProduct(product2);
 
         Auction auction1 = Instancio.create(Auction.class);
         auction1.setProduct(product1);
-        product1.setAuction(auction1);
         auction1.setEndTime(null);
         auctionService.addNewAuction(auction1);
 
         Auction auction2 = Instancio.create(Auction.class);
         auction2.setProduct(product2);
-        product2.setAuction(auction2);
         auction2.setEndTime(null);
         auctionService.addNewAuction(auction2);
 
@@ -62,7 +58,6 @@ class AuctionServiceIntegrationTest {
         auction1.setProduct(product1);
         auction1.setEndTime(null);
 
-        product1.setAuction(auction1);
         bid1.setAuction(auction1);
 
         Auction savedAuction1 = auctionService.addNewAuction(auction1);

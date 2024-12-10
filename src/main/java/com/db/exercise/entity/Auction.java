@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Table(name = "AUCTION")
-public class Auction {
+public class Auction implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AUCTION_SEQ_GENERATOR")
@@ -23,8 +24,6 @@ public class Auction {
 	@Column(name = "AUCTION_ID", nullable = false)
 	private Long id;
 
-	@OneToOne(mappedBy = "auction", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@PrimaryKeyJoinColumn
 	private Product product;
 
 	@Column(name = "START_TIME", nullable = false)
